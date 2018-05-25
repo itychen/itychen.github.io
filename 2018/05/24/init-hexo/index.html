@@ -86,10 +86,12 @@
 <meta property="og:site_name" content="Yu&#39;s blog">
 <meta property="og:description" content="简介Hexo(中文官方网站)是一个快速, 简洁且高效的博客框架.让上百个页面在几秒内瞬间完成渲染. 环境配置Hexo是基于node.js的, 所以我们在安装它之前需要用到npm安装工具, 这个工具是 node.js 安装包的工具, 所以, 我们先要安装 node.js. 安装Node.js用来生成静态页面。移步Node.js官网下载, 一路安装即可。 安装Git用来将本地Hexo内容提交到Gith">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-24T07:35:16.000Z">
+<meta property="og:image" content="http://yoursite.com/images/screenshot1.png">
+<meta property="og:updated_time" content="2018-05-25T01:54:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+github搭建个人博客">
 <meta name="twitter:description" content="简介Hexo(中文官方网站)是一个快速, 简洁且高效的博客框架.让上百个页面在几秒内瞬间完成渲染. 环境配置Hexo是基于node.js的, 所以我们在安装它之前需要用到npm安装工具, 这个工具是 node.js 安装包的工具, 所以, 我们先要安装 node.js. 安装Node.js用来生成静态页面。移步Node.js官网下载, 一路安装即可。 安装Git用来将本地Hexo内容提交到Gith">
+<meta name="twitter:image" content="http://yoursite.com/images/screenshot1.png">
 
 
 
@@ -351,10 +353,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo: 3.7.1</span><br><span class="line">hexo-cli: 1.1.0</span><br><span class="line">os: Darwin 16.7.0 darwin x64</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
 <pre>
-$ hexo init <folder>
-$ cd <folder>
+$ hexo init &lt;folder&gt;
+$ cd &lt;folder&gt;
 $ npm install
-</folder></folder></pre>
+</pre>
 新建完成后，指定文件夹的目录如下：
 <pre>
 .
@@ -371,6 +373,17 @@ $ npm install
 
 <p>执行如下命令，开启hexo服务器：</p>
 <p><pre><br>$ hexo clean<br>$ hexo g<br>$ hexo s<br></pre><br>此时，浏览器中打开网址<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></p>
+<h3 id="关联Github"><a href="#关联Github" class="headerlink" title="关联Github"></a>关联Github</h3><p>登录你的Github帐号，新建仓库，名为<code>用户名.github.io</code>固定写法，<code>itychen.github.io</code>即下图中1所示：<br><img src="/images/screenshot1.png" alt="图1"><br>打开指定文件夹下的<code>_config.yml</code>,在文件最底部修改成下面的样子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/itychen/itychen.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>注意<code>repository</code>换成自己的用户名, 上图2中的地址。</p>
+<blockquote>
+<p><em><font color="red">特别注意:</font> 在配置所有的_config.yml文件时包括theme中的，在所有的冒号:后边都要加一个空格，否则会报错</em></p>
+</blockquote>
+<p>在自定文件夹目录下执行命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure></p>
+<p>如果报以下错误:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR Local hexo not found in ~/blog</span><br><span class="line">ERROR Try runing: &apos;npm install hexo --save&apos;</span><br></pre></td></tr></table></figure></p>
+<p>执行命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo --save</span><br></pre></td></tr></table></figure></p>
+<p>完成以上命令后执行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
+<p>如果报错 无法找到git，执行命令安装<a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deployer-git</a>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>安装完成后再执行 <code><font color="red"> hexo d </font></code> 命令<br>命令执行成功后,访问 <a href="https://itychen.github.io" target="_blank" rel="noopener">https://itychen.github.io/</a>,注意将<font color="red">itychen</font><br>换成自己的用户名，这是你能看到和<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>一样的页面。</p>
 
       
     </div>
@@ -530,7 +543,7 @@ $ npm install
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境配置"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Node-js"><span class="nav-number">2.1.</span> <span class="nav-text">安装Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Git"><span class="nav-number">2.2.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">2.3.</span> <span class="nav-text">安装hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建站"><span class="nav-number">3.</span> <span class="nav-text">建站</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境配置"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Node-js"><span class="nav-number">2.1.</span> <span class="nav-text">安装Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Git"><span class="nav-number">2.2.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">2.3.</span> <span class="nav-text">安装hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建站"><span class="nav-number">3.</span> <span class="nav-text">建站</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关联Github"><span class="nav-number">3.1.</span> <span class="nav-text">关联Github</span></a></li></ol></li></ol></div>
             
 
           </div>
